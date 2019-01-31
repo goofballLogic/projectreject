@@ -1,4 +1,7 @@
 language: node_js
+branches:
+  only:
+  - master
 node_js:
   - node
 deploy:
@@ -12,3 +15,4 @@ deploy:
   region: eu-west-1
   on:
     repo: goofballLogic/projectreject
+    
