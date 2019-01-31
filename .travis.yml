@@ -1,5 +1,10 @@
 deploy:
   provider: s3
-  access_key_id: "YOUR AWS ACCESS KEY"
-  secret_access_key: "YOUR AWS SECRET KEY"
-  bucket: "S3 Bucket"
+  access_key_id: AKIAI454M4KQ645I4BGA
+  secret_access_key:
+    secure: PhGJPV7dUOcJgxEsAiZONHjUo6Sws7z+reiNpZaqqToSTNq+/MKKemldO4ZjgdnNRIlMc0h+ZSG57eKyBtxzRmgQlSP+Vv7Eq0cq8iOJzReI2RFCqO2zq18sCzsXEMnmoz+TKAek0vGXZDGsEXzN89x5aiqbi+eoQd/3bV5l93ZGNkhl4k3mecelTFBYbBmhUStwoaXWMm1v0IaOKIYjp1IjVXspM1oT5InpP1NdlHX/WWd710pKBe3FYVaZrIyxsjx9znBpVkqe8tX2Mm2Ms8O2VPNlCJEzbAfucGIwhNzPzZan3WTu+6KN+KAZ32FR7AVZG/Uvw1dIigz3Bs62eTRMUWCjL66LS1WOIhi+aSTyd7misFAU9GI3i/XeNLF+sy/F7BO7uOnrgwdk964XxDiUZ1ezUCu1525Qh4ppnS1WO6gyyLFHqX2rvbII7iCrCOzb0ATVRlXpgmfny8uoKwwwBJEiHz7ipLZhukYExZlS2fkzGKIrCsS5lA0/ppKeLK4wwjkFT/69IWOvwA7lKTLPtGhjvDiVn6zsomQhCsKb3MaGOfil3mD+HMgQ61F7RYf/KnAE4gAIfjT3O3Sp+9sIAqu2lGzP0jlmDvI0b/k1c1ZA9D53Ou1Mc5RBSMOCtsnLMS4wKJn9zylX/7WINIlTJYcbTD1b4xg3fvRo4iE=
+  bucket: jobs.projectreject.com
+  local-dir: '0.1'
+  acl: public_read
+  on:
+    repo: goofballLogic/projectreject
