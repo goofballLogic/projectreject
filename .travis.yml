@@ -1,3 +1,6 @@
+language: node_js
+node_js:
+  - echo No build needed
 deploy:
   provider: s3
   access_key_id: AKIAI454M4KQ645I4BGA

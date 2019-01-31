@@ -1,0 +1,19 @@
+{
+  "name": "projectreject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goofballLogic/projectreject.git"
+  },
+  "author": "tinycode2",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/goofballLogic/projectreject/issues"
+  },
+  "homepage": "https://github.com/goofballLogic/projectreject#readme"
+}
