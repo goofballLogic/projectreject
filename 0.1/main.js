@@ -1,0 +1,117 @@
+( async function() {
+
+    const uri = {
+
+        ROOT: "//jobs.projectreject.com.s3-website-eu-west-1.amazonaws.com"
+
+    };
+
+    const routes = {
+
+        HOME: "home"
+
+    };
+    let whereami = routes.HOME;
+
+    if ( !detectRequiredFeatures() ) return;
+    function detectRequiredFeatures() {
+
+        const renderNotSupported = x => renderInternalError( "Browser not supported", x );
+        if ( !( "content" in document.createElement( "template" ) ) )
+            return renderNotSupported( "Template elements" ) && false;
+        return true;
+
+    }
+
+    const regionsRequest = await fetch( `${uri.ROOT}/data/indexes/regions.json` );
+    const regions = regionsRequest.ok ? ( await regionsRequest.json() ) : null;
+    render();
+
+    function render() {
+
+
+        if ( !regions ) {
+
+            renderInternalError( "Loading data" );
+
+        }
+        switch( whereami ) {
+
+            case routes.HOME:
+                renderHome();
+                break;
+
+            default:
+                renderNotFound();
+
+        }
+
+    }
+
+    function renderTemplateItems( items, containerSelector, templateSelector, itemTemplateMapper ) {
+
+        const container = document.querySelector( containerSelector );
+        if ( !container ) return renderInternalError( new Error( `Container not found: ${containerSelector}` ) );
+        container.innerHTML = "";
+
+        if ( !( items && items.length ) ) return;
+
+        const template = document.querySelector( templateSelector );
+        if ( !template ) return renderInternalError( new Error( `Template not found: ${templateSelector}` ) );
+
+        items.forEach( item => {
+
+            const element = document.importNode( template.content, true );
+            const mapping = itemTemplateMapper( item );
+            if ( itemTemplateMapper && mapping ) {
+
+                for( const selector in mapping ) {
+
+                    const selected = element.querySelector( selector );
+                    const valueMap = mapping[ selector ];
+                    for( const name in valueMap ) {
+
+                        const value = valueMap[ name ];
+                        if ( name.startsWith( "@" ) )
+                            selected.setAttribute( name.substring( 1 ), value );
+                        else
+                            selected[ name ] = value;
+
+                    }
+
+                }
+
+            }
+            container.appendChild( element );
+
+        } );
+
+    }
+
+    function renderHome() {
+
+        renderTemplateItems( regions, ".region-picker .inputs", "#region-choice-template", region => ( {
+
+            "input": { "@value": region[ "@id" ], "@name": region[ "@id" ] },
+            "img": { "@src": qualifyDataURL( region[ "image" ] ) },
+            "span": { "textContent": region[ "name" ] }
+
+        } ) );
+
+    }
+
+    function renderInternalError( message ) {
+
+        alert( message );
+
+    }
+
+    function qualifyDataURL( maybeURL ) {
+
+        if ( !maybeURL ) return maybeURL;
+        if ( /^(https?:\/\/|\/\/)/.test( maybeURL ) ) return maybeURL;
+        return `${uri.ROOT}/data/${maybeURL}`;
+
+    }
+
+}() )
