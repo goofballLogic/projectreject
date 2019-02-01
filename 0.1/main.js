@@ -6,12 +6,12 @@
 
     };
 
-    const routes = {
+    const states = {
 
-        HOME: "home"
+        HOME: "home",
+        REGION: "region > "
 
     };
-    let whereami = routes.HOME;
 
     if ( !detectRequiredFeatures() ) return;
     function detectRequiredFeatures() {
@@ -23,36 +23,115 @@
 
     }
 
+    const whereami = locateMe();
+
+
     const regionsRequest = await fetch( `${uri.ROOT}/data/indexes/regions.json` );
     const regions = regionsRequest.ok ? ( await regionsRequest.json() ) : null;
+    if ( !regions ) return renderInternalError( "Loading data (regions)" );
+
     render();
 
-    function render() {
+    function renderHome() {
 
+        removeSection( ".region-home" );
+        renderTemplateItems( regions, ".region-picker nav", "#region-choice-template", region => ( {
 
-        if ( !regions ) {
+            "a": { "@href": `?region=${region[ "@id" ]}` },
+            "a img": { "@src": qualifyDataURL( region[ "image" ] ) },
+            "a .region-name": { "textContent": region[ "name" ] }
 
-            renderInternalError( "Loading data" );
-
-        }
-        switch( whereami ) {
-
-            case routes.HOME:
-                renderHome();
-                break;
-
-            default:
-                renderNotFound();
-
-        }
+        } ) );
 
     }
 
-    function renderTemplateItems( items, containerSelector, templateSelector, itemTemplateMapper ) {
+    async function renderRegionHome() {
+
+        removeSection( ".region-picker" );
+        const here = new URL( location.href );
+        const region = here.searchParams.get( "region" );
+        const regionIndexRequest = await fetch( qualifyDataURL( region ) );
+        if ( !regionIndexRequest.ok )
+            return renderNotFound( "Selected region" );
+        const regionIndex = await regionIndexRequest.json();
+        renderTemplateItems( [ regionIndex ], ".region-home", "#region-home-header-template", region => ( {
+
+            "header": { "style": `background-image: url(${qualifyDataURL( region.image )})` },
+            ".name": { "textContent": region.name }
+
+        } ), false );
+        renderTemplateItems( [ regionIndex ], ".region-home", "#region-home-jobs-template", region => ( {
+
+            ".name": { "textContent": region.name }
+
+        } ), false );
+
+    }
+
+    function locateMe() {
+
+        const here = new URL( location.href );
+        if ( here.searchParams.has( "region" ) ) {
+
+            return states.REGION + states.HOME;
+
+        }
+        return states.HOME;
+
+    }
+
+    async function render() {
+
+        switch( whereami ) {
+
+            case states.HOME:
+                await renderHome();
+                break;
+            case states.REGION + states.HOME:
+                await renderRegionHome();
+                break;
+            default:
+                await renderNotFound();
+
+        }
+        document.body.classList.remove( "loading" );
+
+    }
+
+    function removeSection( selector ) {
+
+        document.querySelector( selector ).remove();
+
+    }
+
+    function renderDataAsElement( mapping, elementPrototype ) {
+
+        const element = document.importNode( elementPrototype, true );
+        if ( !mapping ) return element;
+        for( const selector in mapping ) {
+
+            const selected = element.querySelector( selector );
+            const valueMap = mapping[ selector ];
+            for( const name in valueMap ) {
+
+                const value = valueMap[ name ];
+                if ( name.startsWith( "@" ) )
+                    selected.setAttribute( name.substring( 1 ), value );
+                else
+                    selected[ name ] = value;
+
+            }
+
+        }
+        return element;
+
+    }
+
+    function renderTemplateItems( items, containerSelector, templateSelector, itemTemplateMapper, clearContainer = true ) {
 
         const container = document.querySelector( containerSelector );
         if ( !container ) return renderInternalError( new Error( `Container not found: ${containerSelector}` ) );
-        container.innerHTML = "";
+        if ( clearContainer ) container.innerHTML = "";
 
         if ( !( items && items.length ) ) return;
 
@@ -61,42 +140,11 @@
 
         items.forEach( item => {
 
-            const element = document.importNode( template.content, true );
-            const mapping = itemTemplateMapper( item );
-            if ( itemTemplateMapper && mapping ) {
-
-                for( const selector in mapping ) {
-
-                    const selected = element.querySelector( selector );
-                    const valueMap = mapping[ selector ];
-                    for( const name in valueMap ) {
-
-                        const value = valueMap[ name ];
-                        if ( name.startsWith( "@" ) )
-                            selected.setAttribute( name.substring( 1 ), value );
-                        else
-                            selected[ name ] = value;
-
-                    }
-
-                }
-
-            }
+            const mapping = itemTemplateMapper && itemTemplateMapper( item );
+            const element = renderDataAsElement( mapping, template.content );
             container.appendChild( element );
 
         } );
-
-    }
-
-    function renderHome() {
-
-        renderTemplateItems( regions, ".region-picker .inputs", "#region-choice-template", region => ( {
-
-            "input": { "@value": region[ "@id" ], "@name": region[ "@id" ] },
-            "img": { "@src": qualifyDataURL( region[ "image" ] ) },
-            "span": { "textContent": region[ "name" ] }
-
-        } ) );
 
     }
 

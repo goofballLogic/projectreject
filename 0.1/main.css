@@ -1,1 +1,89 @@
-* { font-family: Arial; color: #333; }
+* {
+
+    font-family: Arial; color: #333;
+    box-sizing: border-box;
+
+}
+
+body article {
+
+    transition: all 0.5s;
+    opacity: 1;
+
+}
+
+    body article.loading {
+
+        display: none;
+        font-size: 3em;
+        color: #CCC;
+        text-align: center;
+        margin: 200px;
+
+    }
+    body.loading article.loading {
+
+        display: block;
+
+    }
+    body.loading article:not(.loading) {
+
+        opacity: 0;
+
+    }
+
+
+
+
+    .region-picker nav {
+
+        display: flex;
+        height: 400px;
+
+    }
+    .region-picker .job-region {
+
+        display: flex;
+        flex: 1;
+        vertical-align: top;
+        padding: 10px;
+
+    }
+    .region-picker .job-region:hover {
+
+        background-color: #EEE;
+
+    }
+    .region-picker img {
+
+        align-self: flex-start;
+        max-width: 400px;
+        max-height: 400px;
+
+    }
+
+
+
+
+
+
+    .region-home header {
+
+        background-position: center center;
+        background-size: cover;
+        height: 200px;
+        display: flex;
+
+    }
+    .region-home header .name {
+
+        flex: 1;
+        font-size: 100px;
+        color: white;
+        opacity: 0.95;
+        white-space: nowrap;
+        overflow: hidden;
+        align-self: center;
+        padding: 50px;
+
+    }

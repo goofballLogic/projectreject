@@ -9,34 +9,57 @@
         <link rel="stylesheet" href="main.css">
 
     </head>
-    <body>
+    <body class="loading">
 
         <h1>Welcome to Project Reject</h1>
         <p>This is a "job board" where you can find and view jobs</p>
-        <section class="region-picker">
+        <article class="loading">
 
-            <head>Regions</head>
+            We're loading...
+
+        </article>
+        <article class="region-picker">
+
+            <header>Regions</header>
             <p>Where would you like to search for jobs?</p>
             <template id="region-choice-template">
 
-                <label>
+                <a class="job-region">
 
-                    <input type="checkbox">
-                    <img />
-                    <span />
+                    <img>
+                    <span class="region-name"></span>
 
-                </label>
+                </a>
 
             </template>
-            <form method="GET">
+            <nav>
 
-                <div class="inputs">
+            </nav>
 
-                </div>
+        </article>
+        <article class="region-home">
 
-            </form>
+            <template id="region-home-header-template">
 
-        </section>
+                <header>
+
+                    <span class="name"></span>
+
+                </header>
+
+            </template>
+            <template id="region-home-jobs-template">
+
+                <section class="jobs">
+
+                    <p>Here are the jobs for <span class="name"></span>.</p>
+                    ... jobs comming soon
+
+                </section>
+
+            </template>
+
+        </article>
         <script src="main.js"></script>
 
     </body>
