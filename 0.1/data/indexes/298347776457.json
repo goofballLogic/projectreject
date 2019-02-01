@@ -1,0 +1,21 @@
+{
+    "@type": "Index",
+    "@id": "indexes/298347776457.json",
+    "name": "Beflast area",
+    "image": "media/372819856.jpg",
+    "jobs": [{
+        "@id": "jobs/2.json",
+        "title": "Music Teacher",
+        "description": "Government syllabus and extra-curricular teaching",
+        "location": "Titantic Quarter",
+        "salary": "Up to £27,000 per annum",
+        "terms": "Temporary"
+    },{
+        "@id": "jobs/1.json",
+        "title": "Software Engineer",
+        "description": "Programming and stuff",
+        "location": "Belfast city center",
+        "salary": "£35,000-45,000 per annum",
+        "terms": "Permanent"
+    }]
+}
