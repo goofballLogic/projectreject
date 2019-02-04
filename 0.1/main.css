@@ -5,6 +5,12 @@
 
 }
 
+body {
+
+    font-size: 16px;
+
+}
+
 body article {
 
     transition: all 0.5s;
@@ -21,6 +27,7 @@ body article {
         margin: 200px;
 
     }
+    
     body.loading article.loading {
 
         display: block;
@@ -31,9 +38,6 @@ body article {
         opacity: 0;
 
     }
-
-
-
 
     .region-picker nav {
 
@@ -62,11 +66,6 @@ body article {
 
     }
 
-
-
-
-
-
     .region-home header {
 
         background-position: center center;
@@ -87,3 +86,87 @@ body article {
         padding: 50px;
 
     }
+
+
+    .regions {
+
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-template-areas: "Belfast"  "South-East" "South-West" "North-West" "North-East";
+        grid-gap: 1rem;
+        padding: 1rem;
+        background: #fff;
+
+      }
+
+        .regions a {
+
+            height: 240px;
+            position: relative;
+            background-size: cover;
+            cursor: pointer;
+            transition: filter 0.25s ease-in;
+
+        }
+
+            .regions a:hover {
+
+                filter: grayscale(100%);
+
+            }
+
+
+            .regions a span {
+
+                position: absolute;
+                bottom: 1rem;
+                left: 1rem;
+                font-size: 1.5rem;
+                color: #fff;
+
+            }
+        
+        .belfast { 
+            
+            grid-area: Belfast; 
+
+        }
+    
+        .south-east { 
+        
+            grid-area: South-East; 
+    
+        }
+    
+        .south-west { 
+        
+            grid-area: South-West; 
+
+        }
+    
+        .north-west { 
+        
+            grid-area: North-West; 
+    
+        }
+    
+        .north-east { 
+        
+            grid-area: North-East;
+    
+        }
+
+        @media only screen and (min-width: 768px) {
+
+            .regions {
+
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-rows: 1fr 1fr;
+                grid-template-areas: "Belfast Belfast South-East" "South-West North-West North-East";
+                grid-gap: 1rem;
+                padding: 1rem;
+        
+            }
+
+        }
