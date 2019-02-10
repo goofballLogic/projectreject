@@ -15,7 +15,7 @@
 
             <nav>
 
-                <a href="">    
+                <a href="/">
 
                     <h1>Our first job site</h1>
                     <img src="" alt="brand logo">
@@ -45,7 +45,7 @@
         <article class="region-picker">
 
             <header>
-                
+
                 <h2>Job Regions</h2>
                 <p>Which region are you seeking employment in?</p>
 
@@ -75,20 +75,35 @@
                 </header>
 
             </template>
-            <template id="region-home-jobs-template">
+            <template id="region-home-results">
 
                 <section class="jobs">
 
                     <h2>We found the following jobs for <span class="name"></span>.</h2>
-                    
-                    <section class="no-results" aria-live="polite">
-                        
-                        <h3>No jobs were found</h3>
-                        <p>Sorry, we currently don't have any job listings for this region</p>
-                    
-                    </section>
+                    <ol class="results">
+
+                    </ol>
 
                 </section>
+
+            </template>
+            <template id="region-home-no-results">
+
+                <section class="no-results" aria-live="polite">
+
+                    <h3>No jobs were found</h3>
+                    <p>Sorry, we currently don't have any job listings for this region</p>
+
+                </section>
+
+            </template>
+            <template id="region-home-job-template">
+
+                <h3 class="name"></h3>
+                <p class="description"></p>
+                <span class="location"></span>
+                <span class="salary"></span>
+                <span class="terms"></span>
 
             </template>
 

@@ -58,11 +58,28 @@
             ".name": { "textContent": region.name }
 
         } ), false );
-        renderTemplateItems( [ regionIndex ], ".region-home", "#region-home-jobs-template", region => ( {
+        if ( regionIndex.jobs && regionIndex.jobs.length ) {
 
-            ".name": { "textContent": region.name }
+            renderTemplateItems( [ regionIndex ], ".region-home", "#region-home-results", region => ( {
 
-        } ), false );
+                ".name": { "textContent": region.name }
+
+            } ), false );
+            renderTemplateItems( regionIndex.jobs, ".region-home .jobs .results", "#region-home-job-template", job => ( {
+
+                ".name": { "textContent": job.title },
+                ".description": { "textContent": job.description },
+                ".location": { "textContent": job.location },
+                ".salary": { "textContent": job.salary },
+                ".terms": { "textContent": job.terms }
+
+            } ) );
+
+        } else {
+
+            renderTemplate( ".region-home", "#region-home-no-results", false );
+
+        }
 
     }
 
@@ -122,6 +139,20 @@
 
         }
         return element;
+
+    }
+
+    function renderTemplate( containerSelector, templateSelector, clearContainer = true ) {
+
+        const container = document.querySelector( containerSelector );
+        if ( !container ) return renderInternalError( new Error( `Container not found: ${containerSelector}` ) );
+        if ( clearContainer ) container.innerHTML = "";
+
+        const template = document.querySelector( templateSelector );
+        if ( !template ) return renderInternalError( new Error( `Template not found: ${templateSelector}` ) );
+
+        const element = document.importNode( template.content, true );
+        container.appendChild( element );
 
     }
 
