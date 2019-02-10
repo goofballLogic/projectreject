@@ -2,7 +2,7 @@
 
     const uri = {
 
-        ROOT: "//jobs.projectreject.com.s3-website-eu-west-1.amazonaws.com"
+        ROOT: ""
 
     };
 
@@ -24,7 +24,6 @@
     }
 
     const whereami = locateMe();
-
 
     const regionsRequest = await fetch( `${uri.ROOT}/data/indexes/regions.json` );
     const regions = regionsRequest.ok ? ( await regionsRequest.json() ) : null;

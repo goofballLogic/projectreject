@@ -1,21 +1,26 @@
 [{
     "@type": "Index",
-    "@id": "indexes/298347776457.json",
+    "@id": "indexes/belfast.json",
     "name": "Befast",
     "image": "media/372819856.jpg"
 },{
     "@type": "Index",
-    "@id": "indexes/574839485.json",
+    "@id": "indexes/south-east.json",
     "name": "South East",
     "image": "media/473829385.jpg"
 },{
     "@type": "Index",
-    "@id": "indexes/574839485.json",
+    "@id": "indexes/south-west.json",
     "name": "South West",
     "image": "media/473829385.jpg"
 },{
     "@type": "Index",
-    "@id": "indexes/574839485.json",
+    "@id": "indexes/north-west.json",
+    "name": "North West",
+    "image": "media/473829385.jpg"
+},{
+    "@type": "Index",
+    "@id": "indexes/north-east.json",
     "name": "North East",
     "image": "media/473829385.jpg"
 }]
