@@ -37,8 +37,7 @@
         removeSection( ".region-home" );
         renderTemplateItems( regions, ".region-picker nav", "#region-choice-template", region => ( {
 
-            "a": { "@href": `?region=${region[ "@id" ]}` },
-            "a img": { "@src": qualifyDataURL( region[ "image" ] ) },
+            "a": { "@href": `?region=${region[ "@id" ]}`, "style":  `background-image: url(${qualifyDataURL( region[ "image" ] )})` },
             "a .region-name": { "textContent": region[ "name" ] }
 
         } ) );

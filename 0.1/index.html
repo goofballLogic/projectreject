@@ -11,67 +11,49 @@
     </head>
     <body class="loading">
 
-        <h1>Welcome to Project Reject</h1>
-        <p>This is a "job board" where you can find and view jobs</p>
+        <header>
+
+            <nav>
+
+                <a href="">    
+
+                    <h1>Our first job site</h1>
+                    <img src="" alt="brand logo">
+
+                </a>
+
+            </nav>
+
+        </header>
+
+        <div class="search-bar" region="search">
+
+            <div class="search">
+
+                search stuff will go here
+
+            </div>
+
+        </div>
+
         <article class="loading">
 
             We're loading...
 
         </article>
 
-        <div class="regions">
-
-            <a class="belfast" style="background-image: url(//jobs.projectreject.com.s3-website-eu-west-1.amazonaws.com/data/media/372819856.jpg);">
-
-
-                <span>Belfast</span>
-
-
-            </a>
-
-            <a class="south-east" style="background-image: url(//jobs.projectreject.com.s3-website-eu-west-1.amazonaws.com/data/media/473829385.jpg);">
-
-
-                <span>South East</span>
-    
-        
-            </a>
-
-            <a class="south-west" style="background-image: url(//jobs.projectreject.com.s3-website-eu-west-1.amazonaws.com/data/media/372819856.jpg);">
-
-
-                <span>South West</span>
-        
-
-            </a>
-
-            <a class="north-west" style="background-image: url(//jobs.projectreject.com.s3-website-eu-west-1.amazonaws.com/data/media/372819856.jpg);">
-
-
-                <span>North West</span>
-            
-
-            </a>
-
-            <a class="north-east" style="background-image: url(//jobs.projectreject.com.s3-website-eu-west-1.amazonaws.com/data/media/372819856.jpg);">
-
-
-                <span>North East</span>
-                
-
-            </a>
-
-          </div>
-
         <article class="region-picker">
 
-            <header><h2>Regions</h2></header>
-            <p>Where would you like to search for jobs?</p>
+            <header>
+                
+                <h2>Job Regions</h2>
+                <p>Which region are you seeking employment in?</p>
+
+            </header>
             <template id="region-choice-template">
 
                 <a class="job-region">
 
-                    <img>
                     <span class="region-name"></span>
 
                 </a>
@@ -97,8 +79,14 @@
 
                 <section class="jobs">
 
-                    <p>Here are the jobs for <span class="name"></span>.</p>
-                    ... jobs comming soon
+                    <h2>We found the following jobs for <span class="name"></span>.</h2>
+                    
+                    <section class="no-results" aria-live="polite">
+                        
+                        <h3>No jobs were found</h3>
+                        <p>Sorry, we currently don't have any job listings for this region</p>
+                    
+                    </section>
 
                 </section>
 

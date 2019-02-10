@@ -1,11 +1,21 @@
 [{
     "@type": "Index",
     "@id": "indexes/298347776457.json",
-    "name": "Beflast area",
+    "name": "Befast",
     "image": "media/372819856.jpg"
 },{
     "@type": "Index",
     "@id": "indexes/574839485.json",
-    "name": "North Down and Ards Pennisula",
+    "name": "South East",
+    "image": "media/473829385.jpg"
+},{
+    "@type": "Index",
+    "@id": "indexes/574839485.json",
+    "name": "South West",
+    "image": "media/473829385.jpg"
+},{
+    "@type": "Index",
+    "@id": "indexes/574839485.json",
+    "name": "North East",
     "image": "media/473829385.jpg"
 }]

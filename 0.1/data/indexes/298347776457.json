@@ -1,7 +1,7 @@
 {
     "@type": "Index",
     "@id": "indexes/298347776457.json",
-    "name": "Beflast area",
+    "name": "Belfast",
     "image": "media/372819856.jpg",
     "jobs": [{
         "@id": "jobs/2.json",
@@ -14,7 +14,7 @@
         "@id": "jobs/1.json",
         "title": "Software Engineer",
         "description": "Programming and stuff",
-        "location": "Belfast city center",
+        "location": "Belfast",
         "salary": "£35,000-45,000 per annum",
         "terms": "Permanent"
     }]

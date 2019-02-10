@@ -1,7 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:600,600i');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i');
+@import url('https://use.fontawesome.com/releases/v5.7.1/css/all.css');
+
 * {
 
     font-family: Arial; color: #333;
     box-sizing: border-box;
+
+}
+
+body,html {
+
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
 
 }
 
@@ -39,68 +51,110 @@ body article {
 
     }
 
-    .region-picker nav {
+    /***** Typography *****/
 
-        display: flex;
-        height: 400px;
+    h1, h2, h3, h4, h5 {
 
-    }
-    .region-picker .job-region {
-
-        display: flex;
-        flex: 1;
-        vertical-align: top;
-        padding: 10px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
 
     }
-    .region-picker .job-region:hover {
 
-        background-color: #EEE;
 
-    }
-    .region-picker img {
+    .search-bar {
 
-        align-self: flex-start;
-        max-width: 400px;
-        max-height: 400px;
+        background: #0c2577;
+        padding: 1rem;
 
     }
+
+        .search-bar .search {
+
+            max-width: 1280px;
+            margin: 0 auto;
+            color: #fff;
+
+        }
+
+    /***** Main header *****/
+
+    body > header {
+
+        background: #fff;
+        padding: 1rem;
+        color: #0c2577;
+
+    }
+
+        body > header nav {
+
+            max-width: 1280px;
+            margin: 0 auto;
+
+        }
+
+        body > header nav a h1 {
+            
+            text-indent: -10000px;
+            font-size: 0;
+
+        }
+
+    .region-picker header {
+        
+        text-align: center;
+        padding: 2rem 1rem;
+
+    }
+
+        .region-picker header h2 {
+            
+            margin: 0 0 0.5rem 0;
+
+        }
+
+        .region-picker header p {
+
+            margin: 0;
+
+        }
 
     .region-home header {
 
         background-position: center center;
         background-size: cover;
-        height: 200px;
         display: flex;
-
-    }
-    .region-home header .name {
-
-        flex: 1;
-        font-size: 100px;
-        color: white;
-        opacity: 0.95;
-        white-space: nowrap;
-        overflow: hidden;
-        align-self: center;
-        padding: 50px;
+        text-align: center;
 
     }
 
+        .region-home header .name {
 
-    .regions {
+            flex: 1;
+            font-size: 100px;
+            color: white;
+            opacity: 0.95;
+            white-space: nowrap;
+            overflow: hidden;
+            align-self: center;
+            padding: 50px;
+
+        }
+
+    .region-picker nav {
 
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr 1fr 1fr;
-        grid-template-areas: "Belfast"  "South-East" "South-West" "North-West" "North-East";
         grid-gap: 1rem;
         padding: 1rem;
         background: #fff;
+        max-width: 1280px;
+        margin: 0 auto;
 
       }
 
-        .regions a {
+        .region-picker nav a {
 
             height: 240px;
             position: relative;
@@ -110,14 +164,14 @@ body article {
 
         }
 
-            .regions a:hover {
+            .region-picker nav a:hover {
 
                 filter: grayscale(100%);
 
             }
 
 
-            .regions a span {
+            .region-picker nav a span {
 
                 position: absolute;
                 bottom: 1rem;
@@ -126,47 +180,56 @@ body article {
                 color: #fff;
 
             }
-        
-        .belfast { 
-            
-            grid-area: Belfast; 
-
-        }
-    
-        .south-east { 
-        
-            grid-area: South-East; 
-    
-        }
-    
-        .south-west { 
-        
-            grid-area: South-West; 
-
-        }
-    
-        .north-west { 
-        
-            grid-area: North-West; 
-    
-        }
-    
-        .north-east { 
-        
-            grid-area: North-East;
-    
-        }
 
         @media only screen and (min-width: 768px) {
 
-            .regions {
+            .region-picker nav {
 
                 grid-template-columns: 1fr 1fr 1fr;
                 grid-template-rows: 1fr 1fr;
-                grid-template-areas: "Belfast Belfast South-East" "South-West North-West North-East";
                 grid-gap: 1rem;
                 padding: 1rem;
         
             }
+
+            .region-picker nav a:first-child {
+                
+                grid-column: 1 / 3;
+                
+            }
+
+        }
+
+/***** job list page *****/
+
+.jobs {
+
+    max-width: 1280px;
+    padding: 1rem;
+    margin: 0 auto;
+
+}
+
+    .jobs .no-results {
+
+        text-align: center;
+        margin: 4rem 0rem;
+        border-top: 1px solid #eaeaea;
+        border-bottom: 1px solid #eaeaea;
+        padding: 2rem 0;
+
+    }
+
+        .jobs .no-results::before {
+
+            content:'\f002';
+            font-family: 'Font Awesome 5 Free';
+            position: relative;
+            display: inline-block;
+            font-size: 2rem;
+            background: #efefef;
+            border-radius: 4px;
+            padding: 0.5rem;
+            font-weight: 600;
 
         }
